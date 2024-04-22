@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/shraeya-iyer.github.io/static/css/main.f9b94fc7.css",
+    "main.js": "/shraeya-iyer.github.io/static/js/main.45969273.js",
+    "static/media/headshotzoomed.png": "/shraeya-iyer.github.io/static/media/headshotzoomed.29eec3814b87cb982f1e.png",
+    "static/media/yellowstone.jpeg": "/shraeya-iyer.github.io/static/media/yellowstone.1aead1fb349e662d42e6.jpeg",
+    "index.html": "/shraeya-iyer.github.io/index.html",
+    "main.f9b94fc7.css.map": "/shraeya-iyer.github.io/static/css/main.f9b94fc7.css.map",
+    "main.45969273.js.map": "/shraeya-iyer.github.io/static/js/main.45969273.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f9b94fc7.css",
+    "static/js/main.45969273.js"
+  ]
+}
