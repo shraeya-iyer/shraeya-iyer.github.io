@@ -1,0 +1,194 @@
+.header2 {
+    padding-top: 150px;
+    position: sticky;
+    color:floralwhite;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    z-index: 10;
+    font-size:2.3rem;
+}
+
+.heading3 {
+    position: sticky;
+    color:floralwhite;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+    padding: 1rem;
+    margin: 1rem 0;
+    z-index: 10;
+    font-size:2.3rem;
+}
+
+.normal-text {
+    color: floralwhite;
+    width: 100%;
+    padding: 1rem;
+    margin: 1rem 0;
+    font-size: 1.3rem;
+    text-align: left; /* Align text to the left */
+}
+
+.normal-text a {
+    color:hotpink; /* Set your preferred link color */
+    text-decoration: underline; /* Optional, if you want underline */
+}
+
+.mycookbook {
+    width: 100%;
+    padding: 1rem 1rem;
+    padding-top: 90px
+
+}
+
+.card-container {
+    max-width: 3000px;
+    max-height: 90vh; /* Example to ensure it doesn't exceed the viewport height */
+    margin: auto;
+    position: fixed;
+    top: 10vh; /* Adjusted to give some top space */
+    left: 100px; 
+    right: 100px;
+    overflow-y: auto; /* Allow vertical scrolling */
+}
+
+.card-container .card {
+    border: 1px solid rgba(255, 250, 240, 0.481);
+    color: #000000;
+    background-color:rgba(255, 250, 240, 0.822);
+    box-shadow: 0px 20px 40px rgba(0,0,0,0.25);
+}
+
+.card {
+    text-align: center;
+    padding: 1rem;
+    min-height: 825px;
+}
+
+
+
+.card h3 {
+    font-size: 1.4rem;
+    padding: 1rem;
+}
+
+.card .bar {
+    border-bottom: 1px solid #000000;
+    width: 100%;
+    display: block;
+    align-items: left;
+}
+
+.card .btc {
+    font-size: 4rem;
+    font-weight: 600;
+    padding: 1rem;
+}
+
+.mycookbook p {
+    color: #000000;
+    padding: 1rem 0;
+    font-size: 1.3rem;
+}
+
+.card .btn {
+    display: block;
+    width: 80%;
+    margin: 2rem auto;
+}
+
+.image-container {
+    display: flex;
+    justify-content:center; 
+    align-items: center;
+    margin: 1rem 0;
+    padding: 1rem;
+    min-height: 700px;
+    max-width: 600px; 
+    max-height: 800px; 
+
+}
+
+.image-container img {
+    width: 100%; 
+    height: auto; 
+    object-fit: cover; 
+}
+
+
+.content-container {
+    display: flex;
+    align-items: center; /* Vertically align items in the middle */
+    justify-content: start; /* Align items to the start of the container */
+    width: 100%;
+}
+
+.text-container,
+.image-container {
+    flex: 1; /* Allows both containers to grow and shrink equally */
+    padding: 1rem; /* Consistent padding */
+}
+
+.text-container {
+    padding: 1rem; 
+}
+
+.text-container ul {
+    list-style-type: disc; 
+    padding-left: 50px; 
+}
+
+.text-container li {
+    text-align: left;
+    font-size: 1.3rem;
+    color: #000000; 
+}
+
+.normal-text a,
+.text-container li a { 
+    color: hotpink;
+    text-decoration: underline; 
+}
+
+.normal-text a:visited,
+.text-container li a:visited { 
+    color: hotpink; 
+}
+@media screen and (max-width: 960px) {
+    .card {
+        width: 100%;  /* Adjust width to 100% of the container */
+        height: auto; /* Allow the height to adjust based on content */
+        min-height: 500px; /* Minimum height to maintain form */
+        overflow-y: auto; /* Enable vertical scrolling within the card */
+    }
+
+    .image-containerimg {
+        max-width: 80%;  /* Full width of the card */
+        height: 0.5rem auto;  /* Adjust height automatically */
+    }
+
+    .content-container {
+        flex-direction: column; /* Stack the image and text vertically */
+        align-items: center;
+    }
+
+    .text-container, .image-container {
+        width: 100%; /* Ensure both containers use the full width */
+        padding: 1rem 0; /* Provide some vertical padding */
+    }
+
+    .image-container {
+        margin: 0.5rem 0; /* Smaller margins for the image container */
+        /* If you want even less margin around the sides, you can specify it like so: */
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+        margin-left: 0;  /* Remove side margins if needed */
+        margin-right: 0; /* Remove side margins if needed */
+    }
+}
+
+

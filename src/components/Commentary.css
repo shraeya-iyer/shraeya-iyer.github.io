@@ -1,0 +1,43 @@
+.commentary-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.toggle {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 10px; /* Ensures padding inside the toggle */
+    background-color: floralwhite;
+}
+
+.toggle.icon-only {
+    border: 1px solid floralwhite;
+    border-radius: 50%; /* Makes it a circle */
+    width: 30px; /* Adjust size to fit your icon */
+    height: 30px;
+}
+
+.toggle.expanded {
+    border: 1px solid #ccc;
+    border-radius: 20px; /* Rounded corners for the speech bubble */
+}
+
+.toggle::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    border: 10px solid transparent;
+    transform: translateX(-50%);
+    display: none; /* Hide the arrow by default */
+}
+
+.toggle.expanded::after {
+    display: block; /* Only display the arrow when expanded */
+    border-top-color: white; /* This makes the arrow appear */
+}

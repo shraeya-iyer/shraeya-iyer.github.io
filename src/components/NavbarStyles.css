@@ -1,0 +1,82 @@
+.header {
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    color: floralwhite;
+    height: 90px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 1000;
+    font-size: 2rem;
+    box-sizing: border-box;
+}
+
+
+h1 {
+    white-space: nowrap; /* Prevents the title from wrapping and becoming too large */
+    /*overflow: hidden;  Hides any overflow */
+    text-overflow: ellipsis; /* Adds ellipsis if the text is too long */
+    flex-shrink: 0; /* Prevents the title from shrinking */
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 10px;
+    justify-content: flex-end;
+    align-items: center;
+    flex-grow: 1; /* Allows the nav menu to grow as needed */
+    margin-left: 1rem; /* Ensures some space between the title and nav items */
+}
+
+.nav-menu li {
+    padding: 0 1rem;
+}
+
+.nav-menu a {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: floralwhite;
+    text-decoration: none;  /* Removes underline from links */
+}
+
+.hamburger {
+    display: none;  /* Hides hamburger menu in non-mobile views */
+}
+
+@media screen and (max-width: 960px) { /* Media query for mobile devices */
+    .hamburger {
+        display: block;  /* Shows hamburger menu icon */
+        z-index:1001;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 0;  
+        right: 0;
+        height: 100vh;
+        width: 100%;
+        flex-direction: column;
+        background-color: rgba(252, 140, 54, 0.277);
+        transform: translateX(100%);
+        display: flex;
+        justify-content: center; 
+        padding-top: 20px; 
+    }
+
+    .nav-menu.active {
+        transform: translateX(0);
+        overflow-y: auto;
+    }
+
+    .nav-menu li {
+        padding: 10px 0;  
+    }
+
+    .nav-menu a {
+        font-size: 2rem;
+    }
+}
