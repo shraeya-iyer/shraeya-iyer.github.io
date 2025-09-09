@@ -62,6 +62,7 @@ const generateGraphData = () => {
 const Node = ({ forwardedRef, position, label, isTab, url, isCenter, onAboutClick, onResearchClick }) => {
     const internalRef = useRef();
     const [hovered, setHovered] = useState(false);
+    const threeDTextFontUrl = '/fonts/TASAExplorer-Regular.ttf';
 
     useFrame(({ clock }) => {
         const targetRef = forwardedRef || internalRef;
@@ -124,6 +125,7 @@ const Node = ({ forwardedRef, position, label, isTab, url, isCenter, onAboutClic
                     color="#fff5fa"
                     anchorX="center"
                     anchorY="middle"
+                    font={threeDTextFontUrl}
                 >
                     {label}
                 </Text>

@@ -19,6 +19,7 @@ function App() {
   const [showResearch, setShowResearch] = useState(false);
   const minDistance = 5;
   const maxDistance = 100;
+  const threeDTextFontUrl = '/fonts/TASAExplorer-Regular.ttf';
 
   const handleShowAboutMe = () => {
     setShowResearch(false);
@@ -38,7 +39,7 @@ function App() {
   return (
     <>
       <Canvas
-        camera={{ position: [0, 0, 35], fov: 75 }}
+        camera={{ position: [0, 0, 20], fov: 75 }}
       >
         <color attach="background" args={['#12060c']} />
         <OrbitControls makeDefault minDistance={minDistance} maxDistance={maxDistance} />
@@ -53,6 +54,7 @@ function App() {
               color="#fff5fa"
               anchorX="center"
               anchorY="middle"
+              font={threeDTextFontUrl}
             >
               shraeya iyer
             </Text>
@@ -64,6 +66,7 @@ function App() {
               anchorY="middle"
               textAlign="center"
               maxWidth={10}
+              font={threeDTextFontUrl}
             >
               4th year student at northwestern university studying cs + philosophy
             </Text>
@@ -75,6 +78,7 @@ function App() {
               anchorY="middle"
               textAlign="center"
               maxWidth={10}
+              font={threeDTextFontUrl}
             >
               contact me at: shraeya[dot]iyer[at]gmail[dot]com
             </Text>
