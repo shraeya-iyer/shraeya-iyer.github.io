@@ -1,6 +1,6 @@
 import React, { Suspense, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Text, OrbitControls } from '@react-three/drei';
+import { Text, Text3D, OrbitControls, Center } from '@react-three/drei';
 import Graph from './components/Graph';
 import ZoomIndicator from './components/ZoomIndicator';
 import AboutMe from './components/AboutMe';
@@ -20,6 +20,7 @@ function App() {
   const minDistance = 5;
   const maxDistance = 100;
   const threeDTextFontUrl = '/fonts/TASAExplorer-Regular.ttf';
+  const threeDText3DFontUrl = '/fonts/TASAExplorer-Regular.json';
 
   const handleShowAboutMe = () => {
     setShowResearch(false);
@@ -48,16 +49,42 @@ function App() {
 
         <Suspense fallback={null}>
           <group visible={!showAboutMe && !showResearch}>
-            <Text
-              position={[0, 1.2, 0]}
-              fontSize={1.5}
-              color="#fff5fa"
-              anchorX="center"
-              anchorY="middle"
-              font={threeDTextFontUrl}
-            >
-              shraeya iyer
-            </Text>
+            {/* Shadow Text3D */}
+            <Center position={[0.15, 1.1, -0.1]}>
+              <Text3D
+                font={threeDText3DFontUrl}
+                size={1.5}
+                height={0.4}
+                curveSegments={12}
+                bevelEnabled
+                bevelThickness={0.1}
+                bevelSize={0.05}
+                bevelOffset={0}
+                bevelSegments={5}
+                letterSpacing={0.1}
+              >
+                shraeya iyer
+                <meshBasicMaterial color="#8a284d" />
+              </Text3D>
+            </Center>
+            {/* Main Text3D */}
+            <Center position={[0, 1.2, 0]}>
+              <Text3D
+                font={threeDText3DFontUrl}
+                size={1.5}
+                height={0.4}
+                curveSegments={12}
+                bevelEnabled
+                bevelThickness={0.1}
+                bevelSize={0.05}
+                bevelOffset={0}
+                bevelSegments={5}
+                letterSpacing={0.1}
+              >
+                shraeya iyer
+                <meshBasicMaterial color="#db3981" />
+              </Text3D>
+            </Center>
             <Text
               position={[0, -0.8, 0]}
               fontSize={0.5}
