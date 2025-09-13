@@ -12,9 +12,7 @@ const generateGraphData = () => {
       { id: 6, label: 'about me', url: null, position: [-4, 3.4, 0] },
       { id: 3, label: 'research', url: null, position: [4, 3.4, 0] },
       { id: 1, label: 'resume', url: 'https://www.linkedin.com/in/shraeya-iyer-4b0796216/', position: [-4, -4.6, 0] },
-      { id: 4, label: 'linkedin', url: 'https://www.linkedin.com/in/shraeya-iyer/', position: [4, -4.6, 0] },
-      { id: 2, label: 'blog (coming soon)', url: null, position: [-8, -0.6, 0] },
-      { id: 5, label: 'github', url: 'https://github.com/shraeya-iyer', position: [8, -0.6, 0] },
+      { id: 2, label: 'socials', url: null, position: [4, -4.6, 0] },
     ];
 
     const tabRadius = 6;
@@ -23,7 +21,20 @@ const generateGraphData = () => {
         edges.push({ source: 0, target: tab.id });
     });
 
-    let nodeIdCounter = nodes.length;
+    // Add branching nodes for socials tab
+    const socialsBranchNodes = [
+      { id: 7, label: 'x', url: 'https://twitter.com/shraeya_iyer', position: [6.5, -6.1, 0], isBranch: true, parentId: 2 },
+      { id: 8, label: 'linkedin', url: 'https://www.linkedin.com/in/shraeya-iyer/', position: [4, -7.1, 0], isBranch: true, parentId: 2 },
+      { id: 9, label: 'github', url: 'https://github.com/shraeya-iyer', position: [1.5, -6.1, 0], isBranch: true, parentId: 2 }
+    ];
+
+    socialsBranchNodes.forEach(branch => {
+        nodes.push({ ...branch, isTab: true, radius: tabRadius * 0.7 });
+        edges.push({ source: branch.parentId, target: branch.id });
+    });
+
+    // Start shell node IDs after the highest existing node ID
+    let nodeIdCounter = Math.max(...nodes.map(n => n.id)) + 1;
     const shells = [
         { radius: 10, count: 20, connectToPreviousShell: true },
         { radius: 16, count: 30, connectToPreviousShell: true },
@@ -32,12 +43,11 @@ const generateGraphData = () => {
         { radius: 46, count: 60, connectToPreviousShell: true },
     ];
 
-    let previousShellNodeStartIndex = 1;
-    let previousShellNodeCount = tabNodesData.length;
+    // Store the original main tab node IDs for shell connections
+    const mainTabNodeIds = tabNodesData.map(tab => tab.id);
 
     shells.forEach(shell => {
         const { radius, count, connectToPreviousShell } = shell;
-        const currentShellNodeStartIndex = nodeIdCounter;
         for (let i = 0; i < count; i++) {
             const phi = Math.acos(-1 + (2 * i + 1) / count);
             const theta = Math.sqrt(count * Math.PI) * phi;
@@ -48,18 +58,17 @@ const generateGraphData = () => {
             nodes.push({ id: newNodeId, position: [x, y, z], radius });
 
             if (connectToPreviousShell) {
-                const targetNodeIndex = previousShellNodeStartIndex + Math.floor(Math.random() * previousShellNodeCount);
-                edges.push({ source: nodes[targetNodeIndex].id, target: newNodeId });
+                // Only connect to the original main tab nodes (not sub-nodes)
+                const randomMainTabId = mainTabNodeIds[Math.floor(Math.random() * mainTabNodeIds.length)];
+                edges.push({ source: randomMainTabId, target: newNodeId });
             }
         }
-        previousShellNodeStartIndex = currentShellNodeStartIndex;
-        previousShellNodeCount = count;
     });
 
     return { nodes, edges };
 };
 
-const Node = ({ forwardedRef, position, label, isTab, url, isCenter, onAboutClick, onResearchClick }) => {
+const Node = ({ forwardedRef, position, label, isTab, url, isCenter, isBranch, onAboutClick, onResearchClick }) => {
     const internalRef = useRef();
     const [hovered, setHovered] = useState(false);
     const threeDTextFontUrl = '/fonts/TASAExplorer-Regular.ttf';
@@ -102,7 +111,7 @@ const Node = ({ forwardedRef, position, label, isTab, url, isCenter, onAboutClic
         }
     };
 
-    const sphereColor = isTab ? '#db3981' : '#fff5fa';
+    const sphereColor = isTab ? (isBranch ? '#8a284d' : '#db3981') : '#fff5fa';
     const scale = hovered ? [1.5, 1.5, 1.5] : [1, 1, 1];
 
     if (isCenter) return null;
@@ -115,12 +124,12 @@ const Node = ({ forwardedRef, position, label, isTab, url, isCenter, onAboutClic
                 onPointerOut={handlePointerOut}
                 scale={scale}
             >
-                <sphereGeometry args={[isTab ? 0.3 : 0.15, 32, 32]} />
+                <sphereGeometry args={[isTab ? (isBranch ? 0.25 : 0.3) : 0.15, 32, 32]} />
                 <meshStandardMaterial color={sphereColor} emissive={hovered ? 'orange' : sphereColor} />
             </mesh>
             {label && (
                 <Text
-                    position={[0, 0.6, 0]}
+                    position={[0, isBranch ? (position[1] < 0 ? -0.6 : 0.6) : 0.6, 0]}
                     fontSize={0.4}
                     color="#fff5fa"
                     anchorX="center"
@@ -134,15 +143,15 @@ const Node = ({ forwardedRef, position, label, isTab, url, isCenter, onAboutClic
     );
 };
 
-const Edge = ({ forwardedRef, sourceNode, targetNode }) => {
+const Edge = ({ forwardedRef, sourceNode, targetNode, isBranchEdge }) => {
     return (
         <group ref={forwardedRef}>
             <Line
                 points={[sourceNode.position, targetNode.position]}
                 color="#fff5fa"
-                lineWidth={0.5}
+                lineWidth={isBranchEdge ? 1.5 : 0.5}
                 transparent
-                opacity={0.3}
+                opacity={isBranchEdge ? 0.6 : 0.3}
             />
         </group>
     );
@@ -193,8 +202,9 @@ const Graph = ({ onAboutClick, onResearchClick }) => {
                 const sourceNode = nodes.find(n => n.id === edge.source);
                 const targetNode = nodes.find(n => n.id === edge.target);
                 if (!sourceNode || !targetNode) return null;
+                const isBranchEdge = targetNode.isBranch;
                 return (
-                   <Edge key={i} sourceNode={sourceNode} targetNode={targetNode} forwardedRef={edgeRefs.current[i]} />
+                   <Edge key={i} sourceNode={sourceNode} targetNode={targetNode} forwardedRef={edgeRefs.current[i]} isBranchEdge={isBranchEdge} />
                 );
             })}
         </group>
