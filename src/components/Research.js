@@ -3,13 +3,14 @@ import './AboutMe.css';
 
 const Research = ({ handleClose }) => {
   return (
-    <div className="popup-container" style={{ height: '80vh', display: 'block' }}>
+    <div className="popup-container">
       <button onClick={handleClose} className="close-button">
         &times;
       </button>
-      <h2>research</h2>
-      <p>Here are some of the projects I'm currently involved in:</p>
-      <ul style={{ textAlign: 'left', paddingLeft: '20px', listStylePosition: 'outside' }}>
+      <div>
+        <h2>research</h2>
+        <p>Here are some of the projects I'm currently involved in:</p>
+        <ul style={{ textAlign: 'left', paddingLeft: '20px', listStylePosition: 'outside' }}>
         <li style={{ marginBottom: '1em' }}>
           <strong>SONIC (The Science of Networks in Communities) Lab:</strong> performing data analysis and research under PhD Candidate <a href="https://megan-a-chan.com/" target="_blank" rel="noopener noreferrer">Megan Chan</a> and <a href="https://nosh.northwestern.edu/" target="_blank" rel="noopener noreferrer">Professor Noshir Contractor</a>. Designed and executed multiplex network analysis to investigate relationship between leader influence and collective team outcomes in space mission simulations. Constructed binary intersection networks from motivation and idea-sharing data, performed team-specific performance classifications, analyzed how network centralization patterns relate to globally normalized synergy scores across three teams. Results revealed performance-dependent effects: network centralization showed no significant relationship with synergy for high-performing leaders but significant positive relationship for low-performing leaders, indicating centralized network structures may enhance team performance when individual leadership is suboptimal. Submitted extended abstract to <a href="https://netscix2026.github.io/#portfolio" target="_blank" rel="noopener noreferrer">NetSciX 2026</a> with co-authors Megan Chan, Isabel Su, Jeffrey Tu, and Noshir Contractor (awaiting review), and continuing to work on full paper through Fall 2025.
         </li>
@@ -19,7 +20,8 @@ const Research = ({ handleClose }) => {
         <li style={{ marginBottom: '1em' }}>
           <strong>Personal Projects:</strong> analyzing structural differences in phenomenas of online polarization and communication. Developing an interface to reduce online polarization.
         </li>
-      </ul>
+        </ul>
+      </div>
     </div>
   );
 };

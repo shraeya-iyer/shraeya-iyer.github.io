@@ -4,7 +4,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     width: clamp(300px, 80vw, 800px);
-    max-height: 80vh;
+    min-height: auto;
+    max-height: 85vh;
     overflow-y: auto;
     padding: 40px;
     background-color: rgba(20, 2, 12, 0.85);
@@ -16,6 +17,7 @@
     display: flex;
     align-items: center;
     gap: 40px;
+    box-sizing: border-box;
   }
   
   .popup-container a {
