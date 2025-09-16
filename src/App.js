@@ -18,7 +18,7 @@ function App() {
   const [showAboutMe, setShowAboutMe] = useState(false);
   const [showResearch, setShowResearch] = useState(false);
   const minDistance = 5;
-  const maxDistance = 100;
+  const maxDistance = 50;
   const threeDTextFontUrl = '/fonts/TASAExplorer-Regular.ttf';
   const threeDText3DFontUrl = '/fonts/TASAExplorer-Regular.json';
 

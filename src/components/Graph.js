@@ -11,7 +11,7 @@ const generateGraphData = () => {
     const tabNodesData = [
       { id: 6, label: 'about me', url: null, position: [-4, 3.4, 0] },
       { id: 3, label: 'research', url: null, position: [4, 3.4, 0] },
-      { id: 1, label: 'resume', url: 'https://www.linkedin.com/in/shraeya-iyer-4b0796216/', position: [-4, -4.6, 0] },
+      { id: 1, label: 'resume', url: 'https://drive.google.com/file/d/1m4PKRtNFA-EW2Cd3YiCcPxR05sphK1W5/view?usp=sharing', position: [-4, -4.6, 0] },
       { id: 2, label: 'socials', url: null, position: [4, -4.6, 0] },
     ];
 
@@ -111,7 +111,7 @@ const Node = ({ forwardedRef, position, label, isTab, url, isCenter, isBranch, o
         }
     };
 
-    const sphereColor = isTab ? (isBranch ? '#8a284d' : '#db3981') : '#fff5fa';
+    const sphereColor = isTab ? (isBranch ? '#8a284d' : '#db3981') : '#ffb3d1';
     const scale = hovered ? [1.5, 1.5, 1.5] : [1, 1, 1];
 
     if (isCenter) return null;
