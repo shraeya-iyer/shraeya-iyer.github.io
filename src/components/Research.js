@@ -18,7 +18,7 @@ const Research = ({ handleClose }) => {
           <strong>Law & Technology Initiative:</strong> developing framework to improve evaluation of AI methods used in the legal field with <a href="https://www.law.northwestern.edu/faculty/profiles/danielwlinna/" target="_blank" rel="noopener noreferrer">Professor Daniel W. Linna</a>, <a href="https://www.crdp.umontreal.ca/chercheurs/westermann-hannes/" target="_blank" rel="noopener noreferrer">Professor Hannes Westermann</a>, and <a href="https://www.cs.cmu.edu/~jsavelka/" target="_blank" rel="noopener noreferrer">Dr. Jaromir Savelka</a>. Co-authoring survey paper, and Co-authoring chapter discussing "Technical Methods for Evaluating AI Applications for Legal Tasks" in book to be published by Cambridge University Press. Presented to 40+ researchers at <a href="https://www.cslawworkshop.org/past-events" target="_blank" rel="noopener noreferrer">CS+Law monthly reading and research group</a> in evaluation of AI research.
         </li>
         <li style={{ marginBottom: '1em' }}>
-          <strong>Personal Projects:</strong> analyzing structural differences in phenomenas of online polarization and communication. Developing an interface to reduce online polarization.
+          <strong>Personal Projects:</strong> analyzing structural differences in phenomenas of online polarization and communication (e.g., echo chambers and epistemic bubbles). Developing an interface to reduce online polarization.
         </li>
         </ul>
       </div>
