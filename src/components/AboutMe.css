@@ -14,9 +14,8 @@
     border: 1px solid #db3981;
     color: #fff5fa;
     z-index: 1000;
-    display: flex;
-    align-items: center;
-    gap: 40px;
+    display: block;
+    line-height: 1.6;
     box-sizing: border-box;
   }
   
@@ -31,15 +30,35 @@
   }
   
   .popup-container img {
-    width: 200px;
-    height: 200px;
+    width: 220px;
+    height: 220px;
     border-radius: 20px;
     object-fit: cover;
+    float: left;
+    shape-outside: inset(0 round 20px);
+    -webkit-shape-outside: inset(0 round 20px);
+    margin: 0 24px 16px 0;
   }
   
   .popup-container h2 {
     text-align: center;
     margin-top: 0;
+  }
+
+  .popup-container::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+  @media (max-width: 560px) {
+    .popup-container img {
+      float: none;
+      display: block;
+      margin: 0 auto 16px auto;
+      shape-outside: none;
+      -webkit-shape-outside: none;
+    }
   }
   
   .popup-container .close-button {
