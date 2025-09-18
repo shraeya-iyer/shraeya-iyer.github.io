@@ -1,4 +1,4 @@
-import React, { Suspense, useState } from 'react';
+import React, { Suspense, useState, useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Text, Text3D, OrbitControls, Center } from '@react-three/drei';
 import Graph from './components/Graph';
@@ -17,6 +17,7 @@ function App() {
   const [distance, setDistance] = useState(35);
   const [showAboutMe, setShowAboutMe] = useState(false);
   const [showResearch, setShowResearch] = useState(false);
+  const controlsRef = useRef();
   const minDistance = 5;
   const maxDistance = 50;
   const threeDTextFontUrl = '/fonts/TASAExplorer-Regular.ttf';
@@ -37,13 +38,33 @@ function App() {
     setShowResearch(false);
   }
 
+  const handleZoomIn = () => {
+    if (controlsRef.current && distance > minDistance) {
+      const currentDistance = controlsRef.current.object.position.length();
+      const newDistance = Math.max(minDistance, currentDistance - 2);
+      const direction = controlsRef.current.object.position.clone().normalize();
+      controlsRef.current.object.position.copy(direction.multiplyScalar(newDistance));
+      controlsRef.current.update();
+    }
+  };
+
+  const handleZoomOut = () => {
+    if (controlsRef.current && distance < maxDistance) {
+      const currentDistance = controlsRef.current.object.position.length();
+      const newDistance = Math.min(maxDistance, currentDistance + 2);
+      const direction = controlsRef.current.object.position.clone().normalize();
+      controlsRef.current.object.position.copy(direction.multiplyScalar(newDistance));
+      controlsRef.current.update();
+    }
+  };
+
   return (
     <>
       <Canvas
         camera={{ position: [0, 0, 20], fov: 75 }}
       >
         <color attach="background" args={['#12060c']} />
-        <OrbitControls makeDefault minDistance={minDistance} maxDistance={maxDistance} />
+        <OrbitControls ref={controlsRef} makeDefault minDistance={minDistance} maxDistance={maxDistance} />
         <ambientLight intensity={0.8} />
         <pointLight position={[10, 10, 10]} />
 
@@ -115,7 +136,13 @@ function App() {
           <CameraTracker setDistance={setDistance} />
         </Suspense>
       </Canvas>
-      <ZoomIndicator currentDistance={distance} minDistance={minDistance} maxDistance={maxDistance} />
+      <ZoomIndicator 
+        currentDistance={distance} 
+        minDistance={minDistance} 
+        maxDistance={maxDistance}
+        onZoomIn={handleZoomIn}
+        onZoomOut={handleZoomOut}
+      />
       {showAboutMe && <AboutMe handleClose={handleClosePopups} />}
       {showResearch && <Research handleClose={handleClosePopups} />}
     </>
