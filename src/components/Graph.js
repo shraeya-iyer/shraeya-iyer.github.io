@@ -11,7 +11,7 @@ const generateGraphData = () => {
     const tabNodesData = [
       { id: 6, label: 'about me', url: null, position: [-4, 3.4, 0] },
       { id: 3, label: 'research', url: null, position: [4, 3.4, 0] },
-      { id: 1, label: 'resume', url: 'https://drive.google.com/file/d/1m4PKRtNFA-EW2Cd3YiCcPxR05sphK1W5/view?usp=sharing', position: [-4, -4.6, 0] },
+      { id: 1, label: 'resume', url: 'https://drive.google.com/file/d/1KxroHzEz5tb511bqbGety8iKg94o4c8l/view?usp=sharing', position: [-4, -4.6, 0] },
       { id: 2, label: 'socials', url: null, position: [4, -4.6, 0] },
     ];
 
