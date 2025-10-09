@@ -1,6 +1,6 @@
 {
   "short_name": "Shraeya Iyer",
-  "name": "Shraeya Iyer - Personal Website",
+  "name": "Shraeya Iyer Personal Website",
   "icons": [
     {
       "src": "favicon.ico",
@@ -8,12 +8,12 @@
       "type": "image/x-icon"
     },
     {
-      "src": "favicon-192.png",
+      "src": "logo192.png",
       "type": "image/png",
       "sizes": "192x192"
     },
     {
-      "src": "favicon-512.png",
+      "src": "logo512.png",
       "type": "image/png",
       "sizes": "512x512"
     }
