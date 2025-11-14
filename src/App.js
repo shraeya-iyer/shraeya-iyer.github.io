@@ -63,7 +63,7 @@ function App() {
       <Canvas
         camera={{ position: [0, 0, 20], fov: 75 }}
       >
-        <color attach="background" args={['#12060c']} />
+        <color attach="background" args={['#fffdf5']} />
         <OrbitControls ref={controlsRef} makeDefault minDistance={minDistance} maxDistance={maxDistance} />
         <ambientLight intensity={0.8} />
         <pointLight position={[10, 10, 10]} />
@@ -85,7 +85,7 @@ function App() {
                 letterSpacing={0.1}
               >
                 shraeya iyer
-                <meshBasicMaterial color="#8a284d" />
+                <meshBasicMaterial color="#61294e" />
               </Text3D>
             </Center>
             {/* Main Text3D */}
@@ -103,13 +103,13 @@ function App() {
                 letterSpacing={0.1}
               >
                 shraeya iyer
-                <meshBasicMaterial color="#db3981" />
+                <meshBasicMaterial color="#d4445d" />
               </Text3D>
             </Center>
             <Text
               position={[0, -0.8, 0]}
               fontSize={0.5}
-              color="#fff5fa"
+              color="#61294e"
               anchorX="center"
               anchorY="middle"
               textAlign="center"
@@ -121,7 +121,7 @@ function App() {
             <Text
               position={[0, -2.4, 0]}
               fontSize={0.5}
-              color="#fff5fa"
+              color="#61294e"
               anchorX="center"
               anchorY="middle"
               textAlign="center"

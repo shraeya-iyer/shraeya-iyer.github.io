@@ -24,9 +24,9 @@ const ZoomIndicator = ({ currentDistance, minDistance, maxDistance, onZoomIn, on
             width: '24px',
             height: '24px',
             borderRadius: '50%',
-            border: '1px solid rgba(255, 255, 255, 0.3)',
-            backgroundColor: 'rgba(255, 255, 255, 0.1)',
-            color: 'rgba(255, 255, 255, 0.8)',
+            border: '1px solid rgba(97, 41, 78, 0.3)',
+            backgroundColor: 'rgba(97, 41, 78, 0.1)',
+            color: '#61294e',
             cursor: currentDistance >= maxDistance ? 'not-allowed' : 'pointer',
             display: 'flex',
             alignItems: 'center',
@@ -38,13 +38,13 @@ const ZoomIndicator = ({ currentDistance, minDistance, maxDistance, onZoomIn, on
           }}
           onMouseEnter={(e) => {
             if (currentDistance < maxDistance) {
-              e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
-              e.target.style.borderColor = 'rgba(255, 255, 255, 0.5)';
+              e.target.style.backgroundColor = 'rgba(97, 41, 78, 0.2)';
+              e.target.style.borderColor = 'rgba(97, 41, 78, 0.5)';
             }
           }}
           onMouseLeave={(e) => {
-            e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-            e.target.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+            e.target.style.backgroundColor = 'rgba(97, 41, 78, 0.1)';
+            e.target.style.borderColor = 'rgba(97, 41, 78, 0.3)';
           }}
         >
           −
@@ -56,9 +56,9 @@ const ZoomIndicator = ({ currentDistance, minDistance, maxDistance, onZoomIn, on
             width: '24px',
             height: '24px',
             borderRadius: '50%',
-            border: '1px solid rgba(255, 255, 255, 0.3)',
-            backgroundColor: 'rgba(255, 255, 255, 0.1)',
-            color: 'rgba(255, 255, 255, 0.8)',
+            border: '1px solid rgba(97, 41, 78, 0.3)',
+            backgroundColor: 'rgba(97, 41, 78, 0.1)',
+            color: '#61294e',
             cursor: currentDistance <= minDistance ? 'not-allowed' : 'pointer',
             display: 'flex',
             alignItems: 'center',
@@ -70,13 +70,13 @@ const ZoomIndicator = ({ currentDistance, minDistance, maxDistance, onZoomIn, on
           }}
           onMouseEnter={(e) => {
             if (currentDistance > minDistance) {
-              e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
-              e.target.style.borderColor = 'rgba(255, 255, 255, 0.5)';
+              e.target.style.backgroundColor = 'rgba(97, 41, 78, 0.2)';
+              e.target.style.borderColor = 'rgba(97, 41, 78, 0.5)';
             }
           }}
           onMouseLeave={(e) => {
-            e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-            e.target.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+            e.target.style.backgroundColor = 'rgba(97, 41, 78, 0.1)';
+            e.target.style.borderColor = 'rgba(97, 41, 78, 0.3)';
           }}
         >
           +
@@ -87,15 +87,15 @@ const ZoomIndicator = ({ currentDistance, minDistance, maxDistance, onZoomIn, on
       <div style={{
         width: '150px',
         height: '10px',
-        backgroundColor: 'rgba(255, 255, 255, 0.2)',
+        backgroundColor: 'rgba(97, 41, 78, 0.2)',
         borderRadius: '5px',
         overflow: 'hidden',
-        border: '1px solid rgba(255, 255, 255, 0.3)',
+        border: '1px solid rgba(97, 41, 78, 0.3)',
       }}>
         <div style={{
           width: `${zoomLevel * 100}%`,
           height: '100%',
-          backgroundColor: 'rgba(255, 255, 255, 0.8)',
+          backgroundColor: '#61294e',
           transition: 'width 0.1s ease-out'
         }} />
       </div>

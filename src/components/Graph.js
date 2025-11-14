@@ -111,7 +111,7 @@ const Node = ({ forwardedRef, position, label, isTab, url, isCenter, isBranch, o
         }
     };
 
-    const sphereColor = isTab ? (isBranch ? '#8a284d' : '#db3981') : '#ffb3d1';
+    const sphereColor = isTab ? (isBranch ? '#ba0105' : '#ea5814') : '#ff6b77';
     const scale = hovered ? [1.5, 1.5, 1.5] : [1, 1, 1];
 
     if (isCenter) return null;
@@ -131,7 +131,7 @@ const Node = ({ forwardedRef, position, label, isTab, url, isCenter, isBranch, o
                 <Text
                     position={[0, isBranch ? (position[1] < 0 ? -0.6 : 0.6) : 0.6, 0]}
                     fontSize={0.4}
-                    color="#fff5fa"
+                    color="#61294e"
                     anchorX="center"
                     anchorY="middle"
                     font={threeDTextFontUrl}
@@ -148,10 +148,10 @@ const Edge = ({ forwardedRef, sourceNode, targetNode, isBranchEdge }) => {
         <group ref={forwardedRef}>
             <Line
                 points={[sourceNode.position, targetNode.position]}
-                color="#fff5fa"
+                color="#8a7a58"
                 lineWidth={isBranchEdge ? 1.5 : 0.5}
                 transparent
-                opacity={isBranchEdge ? 0.6 : 0.3}
+                opacity={isBranchEdge ? 0.3 : 0.3}
             />
         </group>
     );
