@@ -125,7 +125,7 @@ const Node = ({ forwardedRef, position, label, isTab, url, isCenter, isBranch, o
                 scale={scale}
             >
                 <sphereGeometry args={[isTab ? (isBranch ? 0.25 : 0.3) : 0.15, 32, 32]} />
-                <meshStandardMaterial color={sphereColor} emissive={hovered ? 'orange' : sphereColor} />
+                <meshStandardMaterial color={sphereColor} emissive={hovered ? '#b0045a' : sphereColor} />
             </mesh>
             {label && (
                 <Text
