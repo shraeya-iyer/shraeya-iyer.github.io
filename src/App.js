@@ -85,7 +85,7 @@ function App() {
                 letterSpacing={0.1}
               >
                 shraeya iyer
-                <meshBasicMaterial color="#56131b" />
+                <meshBasicMaterial color="#61294e" />
               </Text3D>
             </Center>
             {/* Main Text3D */}
@@ -103,13 +103,13 @@ function App() {
                 letterSpacing={0.1}
               >
                 shraeya iyer
-                <meshBasicMaterial color="#941936" />
+                <meshBasicMaterial color="#b0045a" />
               </Text3D>
             </Center>
             <Text
               position={[0, -0.8, 0]}
               fontSize={0.5}
-              color="#56131b"
+              color="#61294e"
               anchorX="center"
               anchorY="middle"
               textAlign="center"
@@ -121,7 +121,7 @@ function App() {
             <Text
               position={[0, -2.4, 0]}
               fontSize={0.5}
-              color="#56131b"
+              color="#61294e"
               anchorX="center"
               anchorY="middle"
               textAlign="center"
