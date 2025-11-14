@@ -111,7 +111,7 @@ const Node = ({ forwardedRef, position, label, isTab, url, isCenter, isBranch, o
         }
     };
 
-    const sphereColor = isTab ? (isBranch ? '#badd7f' : '#005308') : '#d84f7a';
+    const sphereColor = isTab ? (isBranch ? '#a77f60' : '#f7c99e') : '#c45214';
     const scale = hovered ? [1.5, 1.5, 1.5] : [1, 1, 1];
 
     if (isCenter) return null;
