@@ -85,7 +85,7 @@ function App() {
                 letterSpacing={0.1}
               >
                 shraeya iyer
-                <meshBasicMaterial color="#61294e" />
+                <meshBasicMaterial color="#651e29" />
               </Text3D>
             </Center>
             {/* Main Text3D */}
@@ -103,7 +103,7 @@ function App() {
                 letterSpacing={0.1}
               >
                 shraeya iyer
-                <meshBasicMaterial color="#d4445d" />
+                <meshBasicMaterial color="#cc126c" />
               </Text3D>
             </Center>
             <Text

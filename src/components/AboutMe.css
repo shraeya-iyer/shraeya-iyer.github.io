@@ -11,7 +11,7 @@
     background-color: rgba(255, 253, 245, 0.6);
     backdrop-filter: blur(10px);
     border-radius: 20px;
-    border: 1px solid #d4445d;
+    border: 1px solid #005308;
     color: #61294e;
     z-index: 1000;
     display: block;
@@ -20,13 +20,13 @@
   }
   
   .popup-container a {
-    color: #d4445d;
+    color: #005308;
     text-decoration: none;
     transition: color 0.3s ease;
   }
   
   .popup-container a:hover {
-    color: #d4445d;
+    color: #005308;
   }
   
   .popup-container img {
