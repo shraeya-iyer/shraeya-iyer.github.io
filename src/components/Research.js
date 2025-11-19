@@ -9,7 +9,16 @@ const Research = ({ handleClose }) => {
       </button>
       <div>
         <h2>Research</h2>
-        <p>Some projects I'm excited about at the moment:</p>
+        <div style={{ textAlign: 'left', marginBottom: '2em' }}>
+          <h3 style={{ fontWeight: 'bold', marginBottom: '0.5em' }}>Publications</h3>
+          <ul style={{ paddingLeft: '20px', listStylePosition: 'outside', marginTop: '0' }}>
+            <li style={{ marginBottom: '0.5em' }}>
+              Chan, M., <strong>Iyer, S.</strong>, Su, I., Tu, J., Contractor, N. (2026, Feb 17-20). A Multiplex Lens on Influencer Performance, Group Synergy, and Network Centralization. [Conference Presentation]. NetSciX, Auckland, New Zealand.
+            </li>
+          </ul>
+        </div>
+
+        <p>Some projects I'm working on at the moment:</p>
         
         <div style={{ textAlign: 'left', marginBottom: '2em' }}>
           <h3 style={{ fontWeight: 'bold', marginBottom: '0.5em' }}>SONIC (The Science of Networks in Communities) Lab</h3>
