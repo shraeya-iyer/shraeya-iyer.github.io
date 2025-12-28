@@ -5,6 +5,8 @@ import Graph from './components/Graph';
 import ZoomIndicator from './components/ZoomIndicator';
 import AboutMe from './components/AboutMe';
 import Research from './components/Research';
+import Projects from './components/Projects';
+import Publications from './components/Publications';
 
 const CameraTracker = ({ setDistance }) => {
   useFrame(({ camera }) => {
@@ -17,6 +19,8 @@ function App() {
   const [distance, setDistance] = useState(35);
   const [showAboutMe, setShowAboutMe] = useState(false);
   const [showResearch, setShowResearch] = useState(false);
+  const [showProjects, setShowProjects] = useState(false);
+  const [showPublications, setShowPublications] = useState(false);
   const controlsRef = useRef();
   const minDistance = 5;
   const maxDistance = 50;
@@ -25,17 +29,37 @@ function App() {
 
   const handleShowAboutMe = () => {
     setShowResearch(false);
+    setShowProjects(false);
+    setShowPublications(false);
     setShowAboutMe(true);
   };
 
   const handleShowResearch = () => {
     setShowAboutMe(false);
+    setShowProjects(false);
+    setShowPublications(false);
     setShowResearch(true);
+  };
+
+  const handleShowProjects = () => {
+    setShowAboutMe(false);
+    setShowResearch(false);
+    setShowPublications(false);
+    setShowProjects(true);
+  };
+
+  const handleShowPublications = () => {
+    setShowAboutMe(false);
+    setShowResearch(false);
+    setShowProjects(false);
+    setShowPublications(true);
   };
 
   const handleClosePopups = () => {
     setShowAboutMe(false);
     setShowResearch(false);
+    setShowProjects(false);
+    setShowPublications(false)
   }
 
   const handleZoomIn = () => {
@@ -69,7 +93,7 @@ function App() {
         <pointLight position={[10, 10, 10]} />
 
         <Suspense fallback={null}>
-          <group visible={!showAboutMe && !showResearch}>
+          <group visible={!showAboutMe && !showResearch && !showProjects && !showPublications}>
             {/* Shadow Text3D */}
             <Center position={[0.15, 1.1, -0.1]}>
               <Text3D
@@ -132,7 +156,7 @@ function App() {
             </Text>
           </group>
 
-          <Graph onAboutClick={handleShowAboutMe} onResearchClick={handleShowResearch} />
+          <Graph onAboutClick={handleShowAboutMe} onResearchClick={handleShowResearch} onProjectsClick={handleShowProjects} onPublicationsClick={handleShowPublications} />
           <CameraTracker setDistance={setDistance} />
         </Suspense>
       </Canvas>
@@ -145,6 +169,8 @@ function App() {
       />
       {showAboutMe && <AboutMe handleClose={handleClosePopups} />}
       {showResearch && <Research handleClose={handleClosePopups} />}
+      {showProjects && <Projects handleClose={handleClosePopups} />}
+      {showPublications && <Publications handleClose={handleClosePopups} />}
     </>
   );
 }

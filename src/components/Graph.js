@@ -28,7 +28,18 @@ const generateGraphData = () => {
       { id: 9, label: 'github', url: 'https://github.com/shraeya-iyer', position: [1.5, -6.1, 0], isBranch: true, parentId: 2 }
     ];
 
+    // Add branching nodes for socials tab
+    const researchBranchNodes = [
+        { id: 10, label: 'projects', url: null, position: [5.5, 6.1, 0], isBranch: true, parentId: 3 },
+        { id: 11, label: 'publications', url: null, position: [2.5, 6.1, 0], isBranch: true, parentId: 3 }
+      ];
+
     socialsBranchNodes.forEach(branch => {
+        nodes.push({ ...branch, isTab: true, radius: tabRadius * 0.7 });
+        edges.push({ source: branch.parentId, target: branch.id });
+    });
+
+    researchBranchNodes.forEach(branch => {
         nodes.push({ ...branch, isTab: true, radius: tabRadius * 0.7 });
         edges.push({ source: branch.parentId, target: branch.id });
     });
@@ -68,7 +79,7 @@ const generateGraphData = () => {
     return { nodes, edges };
 };
 
-const Node = ({ forwardedRef, position, label, isTab, url, isCenter, isBranch, onAboutClick, onResearchClick }) => {
+const Node = ({ forwardedRef, position, label, isTab, url, isCenter, isBranch, onAboutClick, onResearchClick, onProjectsClick, onPublicationsClick }) => {
     const internalRef = useRef();
     const [hovered, setHovered] = useState(false);
     const threeDTextFontUrl = '/fonts/TASAExplorer-Regular.ttf';
@@ -90,14 +101,17 @@ const Node = ({ forwardedRef, position, label, isTab, url, isCenter, isBranch, o
         } else if (label === 'about me') {
             e.stopPropagation();
             onAboutClick();
-        } else if (label === 'research') {
+        } else if (label === 'projects') {
             e.stopPropagation();
-            onResearchClick();
+            onProjectsClick();
+        } else if (label === 'publications') {
+            e.stopPropagation();
+            onPublicationsClick();
         }
     };
 
     const handlePointerOver = (e) => {
-        if ((isTab && url) || label === 'about me' || label === 'research') {
+        if ((isTab && url) || label === 'about me' || label === 'projects' || label === 'publications') {
             e.stopPropagation();
             setHovered(true);
             document.body.style.cursor = 'pointer';
@@ -105,7 +119,7 @@ const Node = ({ forwardedRef, position, label, isTab, url, isCenter, isBranch, o
     };
     
     const handlePointerOut = () => {
-        if ((isTab && url) || label === 'about me' || label === 'research') {
+        if ((isTab && url) || label === 'about me' || label === 'projects' || label === 'publications') {
             setHovered(false);
             document.body.style.cursor = 'default';
         }
@@ -157,7 +171,7 @@ const Edge = ({ forwardedRef, sourceNode, targetNode, isBranchEdge }) => {
     );
 }
 
-const Graph = ({ onAboutClick, onResearchClick }) => {
+const Graph = ({ onAboutClick, onResearchClick, onPublicationsClick, onProjectsClick }) => {
     const { nodes, edges } = useMemo(generateGraphData, []);
     const nodeRefs = useRef({});
     const edgeRefs = useRef({});
@@ -196,7 +210,7 @@ const Graph = ({ onAboutClick, onResearchClick }) => {
     return (
         <group>
             {nodes.map(node => (
-                <Node key={node.id} {...node} forwardedRef={nodeRefs.current[node.id]} onAboutClick={onAboutClick} onResearchClick={onResearchClick} />
+                <Node key={node.id} {...node} forwardedRef={nodeRefs.current[node.id]} onAboutClick={onAboutClick} onResearchClick={onResearchClick} onProjectsClick={onProjectsClick} onPublicationsClick={onPublicationsClick} />
             ))}
             {edges.map((edge, i) => {
                 const sourceNode = nodes.find(n => n.id === edge.source);
