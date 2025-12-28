@@ -15,6 +15,9 @@ const Research = ({ handleClose }) => {
             <li style={{ marginBottom: '0.5em' }}>
               Chan, M., <strong>Iyer, S.</strong>, Su, I., Tu, J., Contractor, N. (2026, Feb 17-20). A Multiplex Lens on Influencer Performance, Group Synergy, and Network Centralization. [Conference Presentation]. NetSciX, Auckland, New Zealand.
             </li>
+            <li style={{ marginBottom: '0.5em' }}>
+            <strong>Iyer, S.</strong>*, Linna, D.*, Savelka, J.*, Chapter 16: Technical Methods for Evaluating AI Applications for Legal Tasks, in L. Karl Branting with Mia Bonardi, Equalizing Justice: Harnessing AI for Litigants Without Lawyers (Cambridge Univ. Press, forthcoming July 2026). *:alphabetical ordering
+            </li>
           </ul>
         </div>
 
