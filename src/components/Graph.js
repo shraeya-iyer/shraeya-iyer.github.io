@@ -30,8 +30,9 @@ const generateGraphData = () => {
 
     // Add branching nodes for socials tab
     const researchBranchNodes = [
-        { id: 10, label: 'projects', url: null, position: [5.5, 6.1, 0], isBranch: true, parentId: 3 },
-        { id: 11, label: 'publications', url: null, position: [2.5, 6.1, 0], isBranch: true, parentId: 3 }
+        { id: 10, label: 'projects', url: null, position: [6.5, 5.1, 0], isBranch: true, parentId: 3 },
+        { id: 11, label: 'publications', url: null, position: [4, 6.1, 0], isBranch: true, parentId: 3 },
+        { id: 12, label: 'awards', url: null, position: [1.5, 5.1, 0], isBranch: true, parentId: 3 }
       ];
 
     socialsBranchNodes.forEach(branch => {
@@ -79,7 +80,7 @@ const generateGraphData = () => {
     return { nodes, edges };
 };
 
-const Node = ({ forwardedRef, position, label, isTab, url, isCenter, isBranch, onAboutClick, onResearchClick, onProjectsClick, onPublicationsClick }) => {
+const Node = ({ forwardedRef, position, label, isTab, url, isCenter, isBranch, onAboutClick, onResearchClick, onProjectsClick, onPublicationsClick, onAwardsClick }) => {
     const internalRef = useRef();
     const [hovered, setHovered] = useState(false);
     const threeDTextFontUrl = '/fonts/TASAExplorer-Regular.ttf';
@@ -107,11 +108,14 @@ const Node = ({ forwardedRef, position, label, isTab, url, isCenter, isBranch, o
         } else if (label === 'publications') {
             e.stopPropagation();
             onPublicationsClick();
+        } else if (label === 'awards') {
+            e.stopPropagation();
+            onAwardsClick();
         }
     };
 
     const handlePointerOver = (e) => {
-        if ((isTab && url) || label === 'about me' || label === 'projects' || label === 'publications') {
+        if ((isTab && url) || label === 'about me' || label === 'projects' || label === 'publications' || label === 'awards') {
             e.stopPropagation();
             setHovered(true);
             document.body.style.cursor = 'pointer';
@@ -119,7 +123,7 @@ const Node = ({ forwardedRef, position, label, isTab, url, isCenter, isBranch, o
     };
     
     const handlePointerOut = () => {
-        if ((isTab && url) || label === 'about me' || label === 'projects' || label === 'publications') {
+        if ((isTab && url) || label === 'about me' || label === 'projects' || label === 'publications' || label === 'awards') {
             setHovered(false);
             document.body.style.cursor = 'default';
         }
@@ -177,7 +181,7 @@ const Edge = ({ forwardedRef, sourceNode, targetNode, isBranchEdge }) => {
     );
 }
 
-const Graph = ({ onAboutClick, onResearchClick, onPublicationsClick, onProjectsClick }) => {
+const Graph = ({ onAboutClick, onResearchClick, onPublicationsClick, onProjectsClick, onAwardsClick }) => {
     const { nodes, edges } = useMemo(generateGraphData, []);
     const nodeRefs = useRef({});
     const edgeRefs = useRef({});
@@ -216,7 +220,7 @@ const Graph = ({ onAboutClick, onResearchClick, onPublicationsClick, onProjectsC
     return (
         <group>
             {nodes.map(node => (
-                <Node key={node.id} {...node} forwardedRef={nodeRefs.current[node.id]} onAboutClick={onAboutClick} onResearchClick={onResearchClick} onProjectsClick={onProjectsClick} onPublicationsClick={onPublicationsClick} />
+                <Node key={node.id} {...node} forwardedRef={nodeRefs.current[node.id]} onAboutClick={onAboutClick} onResearchClick={onResearchClick} onProjectsClick={onProjectsClick} onPublicationsClick={onPublicationsClick} onAwardsClick={onAwardsClick} />
             ))}
             {edges.map((edge, i) => {
                 const sourceNode = nodes.find(n => n.id === edge.source);

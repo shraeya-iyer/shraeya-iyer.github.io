@@ -7,6 +7,7 @@ import AboutMe from './components/AboutMe';
 import Research from './components/Research';
 import Projects from './components/Projects';
 import Publications from './components/Publications';
+import Awards from './components/Awards';
 
 const CameraTracker = ({ setDistance }) => {
   useFrame(({ camera }) => {
@@ -21,6 +22,7 @@ function App() {
   const [showResearch, setShowResearch] = useState(false);
   const [showProjects, setShowProjects] = useState(false);
   const [showPublications, setShowPublications] = useState(false);
+  const [showAwards, setShowAwards] = useState(false);
   const controlsRef = useRef();
   const minDistance = 5;
   const maxDistance = 50;
@@ -32,6 +34,7 @@ function App() {
     setShowProjects(false);
     setShowPublications(false);
     setShowAboutMe(true);
+    setShowAwards(false);
   };
 
   const handleShowResearch = () => {
@@ -39,6 +42,7 @@ function App() {
     setShowProjects(false);
     setShowPublications(false);
     setShowResearch(true);
+    setShowAwards(false);
   };
 
   const handleShowProjects = () => {
@@ -46,6 +50,7 @@ function App() {
     setShowResearch(false);
     setShowPublications(false);
     setShowProjects(true);
+    setShowAwards(false);
   };
 
   const handleShowPublications = () => {
@@ -53,6 +58,15 @@ function App() {
     setShowResearch(false);
     setShowProjects(false);
     setShowPublications(true);
+    setShowAwards(false);
+  };
+
+  const handleShowAwards = () => {
+    setShowAboutMe(false);
+    setShowResearch(false);
+    setShowProjects(false);
+    setShowPublications(false);
+    setShowAwards(true);
   };
 
   const handleClosePopups = () => {
@@ -60,6 +74,7 @@ function App() {
     setShowResearch(false);
     setShowProjects(false);
     setShowPublications(false)
+    setShowAwards(false);
   }
 
   const handleZoomIn = () => {
@@ -93,7 +108,7 @@ function App() {
         <pointLight position={[10, 10, 10]} />
 
         <Suspense fallback={null}>
-          <group visible={!showAboutMe && !showResearch && !showProjects && !showPublications}>
+          <group visible={!showAboutMe && !showResearch && !showProjects && !showPublications && !showAwards}>
             {/* Shadow Text3D */}
             <Center position={[0.15, 1.1, -0.1]}>
               <Text3D
@@ -156,7 +171,7 @@ function App() {
             </Text>
           </group>
 
-          <Graph onAboutClick={handleShowAboutMe} onResearchClick={handleShowResearch} onProjectsClick={handleShowProjects} onPublicationsClick={handleShowPublications} />
+          <Graph onAboutClick={handleShowAboutMe} onResearchClick={handleShowResearch} onProjectsClick={handleShowProjects} onPublicationsClick={handleShowPublications} onAwardsClick={handleShowAwards} />
           <CameraTracker setDistance={setDistance} />
         </Suspense>
       </Canvas>
@@ -171,6 +186,7 @@ function App() {
       {showResearch && <Research handleClose={handleClosePopups} />}
       {showProjects && <Projects handleClose={handleClosePopups} />}
       {showPublications && <Publications handleClose={handleClosePopups} />}
+      {showAwards && <Awards handleClose={handleClosePopups} />}
     </>
   );
 }
