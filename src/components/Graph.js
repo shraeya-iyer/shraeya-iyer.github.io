@@ -125,6 +125,12 @@ const Node = ({ forwardedRef, position, label, isTab, url, isCenter, isBranch, o
         }
     };
 
+    const labelYOffset = (label === 'about me' || label === 'research')
+            ? -0.6                 // force below node
+            : isBranch
+            ? (position[1] < 0 ? -0.6 : 0.6)
+            : 0.6;
+
     const sphereColor = isTab ? (isBranch ? '#ba271c' : 'rgba(204, 75, 40, 0.2)') : '#f79ea8';
     const scale = hovered ? [1.5, 1.5, 1.5] : [1, 1, 1];
 
@@ -143,7 +149,7 @@ const Node = ({ forwardedRef, position, label, isTab, url, isCenter, isBranch, o
             </mesh>
             {label && (
                 <Text
-                    position={[0, isBranch ? (position[1] < 0 ? -0.6 : 0.6) : 0.6, 0]}
+                    position={[0, labelYOffset, 0]}
                     fontSize={0.4}
                     color="#61294e"
                     anchorX="center"
