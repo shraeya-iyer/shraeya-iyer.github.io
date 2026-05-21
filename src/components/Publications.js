@@ -8,11 +8,11 @@ const Publications = ({ handleClose }) => {
         &times;
       </button>
       <div>
-        <h2>Publications</h2>
+        <h2>Publications & Conference Presentations</h2>
         <div style={{ textAlign: 'left', marginBottom: '2em' }}>
 
           <p>
-            For a more detailed view of each of these projects, feel free tojump over to the projects tab.
+            For a more detailed view of each of these projects, feel free to jump over to the projects tab.
           </p>
 
           <h3 style={{ fontWeight: 'bold', marginBottom: '0.5em' }}>2025</h3>
@@ -28,6 +28,11 @@ const Publications = ({ handleClose }) => {
             <strong>Chapter 16: Technical Methods for Evaluating AI Applications for Legal Tasks, in L. Karl Branting with Mia Bonardi, Equalizing Justice: Harnessing AI for Litigants Without Lawyers</strong>
             <br /><i><u>Shraeya Iyer</u>*, Daniel W. Linna Jr.*, Jaromir Savelka*</i><br />
             Cambridge University Press. Forthcoming July 2026.<br /><a href="https://www.cambridge.org/gu/universitypress/subjects/law/e-commerce-law/equalizing-justice-harnessing-ai-litigants-without-lawyers?format=PB#about-the-authors" target="_blank" rel="noopener noreferrer">Link to Cambridge University Press book details & author information</a>.
+          </p>
+          <p>
+            <strong>Organizing Conversation: The Temporal Dynamics of Turn-Taking, Discursive Structure, and Team Performance</strong>
+            <br /><i>Megan Chan, <u>Shraeya Iyer</u>, Isabel Su, Jeffrey Tu, Noshir Contractor</i><br />
+            INGRoup Conference, Oral Conference Presentation. July 23-25, 2026.<br />.
           </p>
           </div>
         </div>

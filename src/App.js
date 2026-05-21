@@ -1,4 +1,4 @@
-import React, { Suspense, useState, useRef } from 'react';
+import React, { Suspense, useState, useRef, useEffect } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import { Text, Text3D, OrbitControls, Center } from '@react-three/drei';
 import Graph from './components/Graph';
@@ -29,53 +29,35 @@ function App() {
   const threeDTextFontUrl = '/fonts/TASAExplorer-Regular.ttf';
   const threeDText3DFontUrl = '/fonts/TASAExplorer-Regular.json';
 
-  const handleShowAboutMe = () => {
-    setShowResearch(false);
-    setShowProjects(false);
-    setShowPublications(false);
-    setShowAboutMe(true);
-    setShowAwards(false);
+  const openPanel = (panel) => {
+    setShowAboutMe(panel === 'about');
+    setShowResearch(panel === 'research');
+    setShowProjects(panel === 'projects');
+    setShowPublications(panel === 'publications');
+    setShowAwards(panel === 'awards');
+    window.location.hash = panel;
   };
 
-  const handleShowResearch = () => {
-    setShowAboutMe(false);
-    setShowProjects(false);
-    setShowPublications(false);
-    setShowResearch(true);
-    setShowAwards(false);
-  };
-
-  const handleShowProjects = () => {
-    setShowAboutMe(false);
-    setShowResearch(false);
-    setShowPublications(false);
-    setShowProjects(true);
-    setShowAwards(false);
-  };
-
-  const handleShowPublications = () => {
-    setShowAboutMe(false);
-    setShowResearch(false);
-    setShowProjects(false);
-    setShowPublications(true);
-    setShowAwards(false);
-  };
-
-  const handleShowAwards = () => {
-    setShowAboutMe(false);
-    setShowResearch(false);
-    setShowProjects(false);
-    setShowPublications(false);
-    setShowAwards(true);
-  };
+  const handleShowAboutMe = () => openPanel('about');
+  const handleShowResearch = () => openPanel('research');
+  const handleShowProjects = () => openPanel('projects');
+  const handleShowPublications = () => openPanel('publications');
+  const handleShowAwards = () => openPanel('awards');
 
   const handleClosePopups = () => {
     setShowAboutMe(false);
     setShowResearch(false);
     setShowProjects(false);
-    setShowPublications(false)
+    setShowPublications(false);
     setShowAwards(false);
-  }
+    window.history.replaceState(null, '', window.location.pathname);
+  };
+
+  useEffect(() => {
+    const hash = window.location.hash.replace('#', '').toLowerCase();
+    if (hash) openPanel(hash);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleZoomIn = () => {
     if (controlsRef.current && distance > minDistance) {
